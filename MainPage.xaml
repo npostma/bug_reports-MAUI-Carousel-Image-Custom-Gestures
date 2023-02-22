@@ -15,13 +15,8 @@
         <CarouselView 
             Margin="0"
             ItemsSource="{Binding CarouselItems}" 
-            x:Name="carouselView"
             VerticalOptions="StartAndExpand"
-            IsScrollAnimated="False"
-            VerticalScrollBarVisibility="Never"
-            HorizontalScrollBarVisibility="Never"
             IndicatorView="{x:Reference carouselViewIndicator}"
-            ItemsUpdatingScrollMode="KeepItemsInView"
             Loop="False"
             HeightRequest="450"
             WidthRequest="450"
@@ -30,46 +25,20 @@
             <CarouselView.ItemTemplate>
                 <DataTemplate
                     x:DataType="vm:CarouselItemViewModel">
-                    <StackLayout
+
+                    <Image 
+                            Source="{Binding Image.Source}"
+                            Aspect="AspectFill"
+                            HeightRequest="{Binding Image.HeightRequest}"
+                            IsVisible="True" 
+                            BackgroundColor="Transparent"
                             VerticalOptions="CenterAndExpand"
-                            HorizontalOptions="CenterAndExpand"
-                            >
-
-                        <Frame 
-                                BackgroundColor="Purple"
-                                BorderColor="DarkSlateGray"
-                                CornerRadius="5"
-                                VerticalOptions="StartAndExpand"
-                                HorizontalOptions="CenterAndExpand"
-                                HasShadow="False"
-                                Margin="15,0,15,0"
-                                Padding="0,0,0,0"
-                                IsClippedToBounds="True"
-                            >
-                            <StackLayout 
-                                    VerticalOptions="Center" 
-                                    Orientation="Vertical" 
-                                    HorizontalOptions="Center"
-                                    Margin="0,0,0,0"
-                                    Padding="0,0,0,0"
-                                >
-
-                                <Image 
-                                    Source="{Binding Image.Source}"
-                                    Aspect="AspectFill"
-                                    HeightRequest="{Binding Image.HeightRequest}"
-                                    IsVisible="True" 
-                                    BackgroundColor="Transparent"
-                                    VerticalOptions="CenterAndExpand"
-                                >
-                                    <Image.GestureRecognizers>
-                                        <gesture:ClickGestureRecognizer Command="{Binding ClickGestureCarouselOnlyCommand}" />
-                                        <gesture:ReleasedGestureRecognizer Command="{Binding ReleaseGestureCarouselOnlyCommand}" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </StackLayout>
-                        </Frame>
-                    </StackLayout>
+                        >
+                        <Image.GestureRecognizers>
+                            <gesture:ClickGestureRecognizer Command="{Binding ClickGestureCarouselOnlyCommand}" />
+                            <gesture:ReleasedGestureRecognizer Command="{Binding ReleaseGestureCarouselOnlyCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
